@@ -28,6 +28,7 @@ const tieneRol = (...roles) => {
                 msg: `El usuario ${nombre} debe tener alguno de estos roles para borrar ${roles}`
             })
         }
+        next()
     }
 }
 
