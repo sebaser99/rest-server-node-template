@@ -67,10 +67,14 @@ const putUser = async (req, res) => {
 
 const deleteUser = async(req, res) => {
     const {id} = req.params
+
+    const usuarioAutenticado = req.usuario
+    
     const usuario = await User.findByIdAndUpdate(id, {estado: false})
     res.status(200).json({
         msg: `Usuario ${id} borrado exitosamente`,
-        usuario
+        usuario,
+        usuarioAutenticado
     })
 }
 
