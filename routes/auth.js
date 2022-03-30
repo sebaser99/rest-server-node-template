@@ -18,6 +18,5 @@ router.post('/google', [
     validarCampos
     ],
     google )
-
     
 module.exports = router;

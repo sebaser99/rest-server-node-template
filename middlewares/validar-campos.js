@@ -1,4 +1,5 @@
 const { validationResult } = require("express-validator");
+const { Category, Product } = require("../models");
 const User = require('../models/user');
 
 const validarCampos = (req, res, next) => {
@@ -26,8 +27,37 @@ const usuarioExiste = async (id) => {
         
     }
 }
+
+const categoryExistById = async(id) => {
+    const existCategory = await Category.findById(id)
+    if(!existCategory){
+        throw new Error(`eL id de la categoría no es válido. Id: ${id}`)
+    }
+}
+
+const categoryExistByName = async(categoria = '') => {
+    if(categoria !== ''){ 
+        const validName = categoria.toLocaleUpperCase()
+        const existCategory = await Category.findOne({nombre: validName})
+        if(!existCategory){
+            throw new Error(`La categoría ${categoria} no existe en DB, por favor creela antes de agregar productos. `)
+        }
+    }
+}
+
+const productExistById = async(id) => {
+
+    const existProduct = await Product.findById(id)
+    if(!existProduct){
+        throw new Error(`No existe un producto con id ${id}, consulte al admin `)
+    }
+}
+
 module.exports = {
     validarCampos,
     emailExiste,
-    usuarioExiste
+    usuarioExiste,
+    categoryExistById,
+    categoryExistByName,
+    productExistById
 }

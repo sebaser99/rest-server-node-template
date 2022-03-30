@@ -1,5 +1,5 @@
 const brcyptjs = require('bcryptjs');
-const User = require('../models/user');
+const {User} = require('../models/')
 
 const getUser = async (req, res) => {
     const {limite = 5, desde= 0} = req.query
