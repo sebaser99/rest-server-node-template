@@ -6,10 +6,13 @@
 const validarAdminRol = require('../middlewares/validar-adminRol');
 const validarCampos = require('../middlewares/validar-campos');
 const validarJWT = require('../middlewares/validar-jwt');
+const validarArchivo = require('../middlewares/validar-archivo')
 
 
 module.exports = {
     ...validarAdminRol,
     ...validarCampos,
-    ...validarJWT
+    ...validarJWT,
+    ...validarArchivo
+
 }

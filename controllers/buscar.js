@@ -1,5 +1,5 @@
 const { response } = require("express")
-const { User, Category, Product } = require("../models")
+const { User, Category, Product } = require("../models/")
 const {ObjectId} = require('mongoose').Types
 
 const coleccionesPermitidas = [
